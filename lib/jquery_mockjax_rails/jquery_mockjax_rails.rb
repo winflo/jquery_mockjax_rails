@@ -17,9 +17,9 @@ module JqueryMockjaxRails
     end
 
     def js_output
-      stubs.inject('') do |result, stub|
-        "#{result}jQuery.mockjax(#{stub.to_json})\n"
-      end
+      stubs.map do |stub|
+        "jQuery.mockjax(#{stub.to_json})"
+      end.join(";")
     end
   end
 end

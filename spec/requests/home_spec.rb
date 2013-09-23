@@ -6,6 +6,7 @@ describe "Stub ajax request", js: true do
 
   before do
     stub_ajax url: api_path, responseText: { message: message }
+    stub_ajax url: 'api/other_path', responseText: { message: message }
     visit home_index_path
   end
 
