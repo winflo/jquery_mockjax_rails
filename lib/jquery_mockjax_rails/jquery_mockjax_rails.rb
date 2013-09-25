@@ -18,13 +18,13 @@ module JqueryMockjaxRails
 
     def mockjax_representation(stub)
       stub[:url] = resolve_regexp stub[:url]
-      stub.to_json.gsub("\\\\", "\\").gsub('"REGEXP_START', '/').gsub('REGEXP_END"', '/')
+      stub.to_json.gsub("\\\\", "\\").gsub('"REGEXP_START', '').gsub('REGEXP_END"', '')
     end
 
     def resolve_regexp(url)
       case url
       when Regexp
-        "REGEXP_START#{url.source}REGEXP_END"
+        "REGEXP_START#{url.inspect}REGEXP_END"
       else
         url
       end
@@ -33,7 +33,7 @@ module JqueryMockjaxRails
     def js_output
       stubs.map do |stub|
         "jQuery.mockjax(#{mockjax_representation(stub)})"
-      end.join(";")
+      end.join(";\n")
     end
   end
 end
