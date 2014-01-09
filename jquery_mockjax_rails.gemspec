@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~> 3.2.0'
   s.add_dependency 'rspec-rails'
   s.add_dependency 'capybara'
+  s.add_dependency 'select2-rails', '~> 3.4.8'
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'debugger'
   s.add_development_dependency 'spring'
